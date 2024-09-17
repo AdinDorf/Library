@@ -1,17 +1,21 @@
 body {
-
-    display: grid;
-    grid-template-rows: 1fr 4fr;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(238, 238, 245);
 }
 
 .header {
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left:10px;
-    padding-right: 10px;
+    padding: 10px;
+    height: fit-content;
+    box-shadow: 5px 5px 5px rgb(200, 200, 200);
+
 }
 .card-list {
+    padding: 10px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 30%));
     justify-content: center;
@@ -19,6 +23,8 @@ body {
 }
 
 .book {
-    border-style: solid;
-    
+    background-color: white;
+    box-shadow: 5px 5px 5px rgb(200, 200, 200);
+
+    padding: 10px;
 }
