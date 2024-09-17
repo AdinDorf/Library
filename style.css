@@ -1,0 +1,8 @@
+.body {
+    display:grid;
+    grid-template-rows: 1fr, 5fr;
+}
+.card-list {
+    /* display: grid; */
+    
+}
