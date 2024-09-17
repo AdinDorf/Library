@@ -1,8 +1,24 @@
-.body {
-    display:grid;
-    grid-template-rows: 1fr, 5fr;
+body {
+
+    display: grid;
+    grid-template-rows: 1fr 4fr;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left:10px;
+    padding-right: 10px;
 }
 .card-list {
-    /* display: grid; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 30%));
+    justify-content: center;
+    gap: 1em;    
+}
+
+.book {
+    border-style: solid;
     
 }
