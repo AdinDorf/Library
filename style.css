@@ -60,7 +60,7 @@ body {
     gap: 1em;
 }
 
-#addBookForm.submit {
+#addBookForm #submit {
     grid-column: 1 / 3;
 }
 
