@@ -1,6 +1,8 @@
 const myLibrary = [];
 const cardList = document.querySelector(".card-list");
-
+const openModal = document.querySelector(".roundbutton");
+const modal = document.querySelector("#modal");
+const submitForm = document.querySelector(".submit");
 //Book Constructor
 function Book (title, author, wordCount, read) {
     this.title = title;
@@ -81,3 +83,10 @@ addBookToLibrary("The Crippled God", "Steven Erikson", 376000, "unread");
 myLibrary.forEach(book => {
     console.log("Books: " + book.info());
 });
+
+openModal.addEventListener("click", ()=> {
+    modal.showModal();
+ })
+
+
+

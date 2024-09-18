@@ -19,14 +19,14 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 30%));
     justify-content: center;
-    gap: 1em;    
+    gap: 1em;   
 }
 
 .book {
     background-color: white;
     box-shadow: 5px 5px 5px rgb(200, 200, 200);
-
     padding: 10px;
+    border-radius: 5%;
 }
 
 .roundbutton {
@@ -51,4 +51,17 @@ body {
 
 .roundbutton:hover {
     border-color:rgba(200, 200, 200, 0.777);
+}
+
+#modal {
+    max-width: 50ch;
+    padding: 1em;
+    border: 0;
+    box-shadow: 0 0 1em rgb(0 0 0 / 3);
+
+}
+
+#modal::backdrop {
+    background: linear-gradient(0deg, black, whitesmoke);
+    opacity: .4;
 }
