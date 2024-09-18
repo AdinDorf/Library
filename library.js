@@ -66,7 +66,7 @@ function InitializeDisplay(){
 }
 
 
-// Create a book manually
+// Create a bunch of books manually
 addBookToLibrary("The Way of Kings", "Brandon Sanderson", 383389, "read");
 addBookToLibrary("The Crippled God", "Steven Erikson", 376000, "unread");
 addBookToLibrary("The Crippled God", "Steven Erikson", 376000, "unread");
