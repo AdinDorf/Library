@@ -2,6 +2,8 @@ const myLibrary = [];
 const cardList = document.querySelector(".card-list");
 const openModal = document.querySelector(".roundbutton");
 const modal = document.querySelector("#modal");
+
+const form = document.querySelector(".form");
 const submitForm = document.querySelector(".submit");
 //Book Constructor
 function Book (title, author, wordCount, read) {
@@ -89,4 +91,16 @@ openModal.addEventListener("click", ()=> {
  })
 
 
+ form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let title = document.getElementById("Title");
+     let password = document.getElementById("password");
+
+  if (username.value == "" || password.value == "") {
+    // throw error
+  } else {
+    // perform operation with form input
+  }
+ })
 
