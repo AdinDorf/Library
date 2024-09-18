@@ -25,6 +25,8 @@ function addBookToLibrary(title, author, wordCount, read) {
     newBook.classList.add("book");
     cardList.appendChild(newBook);
 
+    newBook.setAttribute("data-index", myLibrary.indexOf(book));
+
     let newBookTitle = document.createElement('h2');
     newBook.appendChild(newBookTitle);
     newBookTitle.textContent = book.title;
@@ -40,32 +42,11 @@ function addBookToLibrary(title, author, wordCount, read) {
     let newBookRead = document.createElement('p');
     newBook.appendChild(newBookRead);
     newBookRead.textContent = book.read;
-}
 
-function InitializeDisplay(){
-    myLibrary.forEach(book => {
-        console.log("Adding " + book.info());
-
-        let newBook = document.createElement("div")
-        newBook.classList.add("book");
-        cardList.appendChild(newBook);
-
-        let newBookTitle = document.createElement('h2');
-        newBook.appendChild(newBookTitle);
-        newBookTitle.textContent = book.title;
-       
-        let newBookAuthor = document.createElement('p');
-        newBook.appendChild(newBookAuthor);
-        newBookAuthor.textContent = book.author;
-
-        let newBookWordCount = document.createElement('p');
-        newBook.appendChild(newBookWordCount);
-        newBookWordCount.textContent = book.wordCount;
-
-        let newBookRead = document.createElement('p');
-        newBook.appendChild(newBookRead);
-        newBookRead.textContent = book.read;
-    });
+    let removeBook = document.createElement("button");
+    newBook.appendChild(removeBook);
+    removeBook.classList.add("removeBookBtn");
+    removeBook.textContent = "x";
 }
 
 
