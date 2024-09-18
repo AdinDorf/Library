@@ -17,21 +17,19 @@
 <!-- This is where the cards go but DOM manipulation? -->
     </div>
     <div class='roundbutton'>+</div>
+    <dialog id="modal">
+        <form id="addBookForm" name="addBookForm" method="dialog">
+            <label for="title">Title:</label>
+            <input type="text" id="title" placeholder="Of Mice and Men" name="Title"/>
+            <label for="author">Author:</label>
+            <input type="text" id="author" placeholder="John Steinbeck" name="Author"/>
+            <label for="words">Word Count:</label>
+            <input type="number" id="words" placeholder="30445" name="Words"/>
+            <label for="read">Read?:</label>
+            <input type="text" id="read" placeholder="Read" name="Read"/>
+            <input type="submit" value="Submit"></input>
+        </form>
+    </dialog>
 
-    <div class='modalWrapper'>
-        <dialog id="modal">
-            <form class="form" method="dialog">
-                <label>Title:</label>
-                <input type="text" placeholder="Of Mice and Men" name="Title"/>
-                <label>Author:</label>
-                <input type="text" placeholder="John Steinbeck" name="Author"/>
-                <label>Word Count:</label>
-                <input type="text" placeholder="30445" name="Word"/>
-                <label>Read?:</label>
-                <input type="text" placeholder="Read" name="Read"/>
-                <button type="submit" class="submit">Submit</button>
-                </form>
-        </dialog>
-    </div>
 </body>
 </html>

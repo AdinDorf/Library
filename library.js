@@ -2,8 +2,7 @@ const myLibrary = [];
 const cardList = document.querySelector(".card-list");
 const openModal = document.querySelector(".roundbutton");
 const modal = document.querySelector("#modal");
-
-const form = document.querySelector(".form");
+const myForm = document.forms.addBookForm;
 const submitForm = document.querySelector(".submit");
 //Book Constructor
 function Book (title, author, wordCount, read) {
@@ -73,14 +72,6 @@ function InitializeDisplay(){
 // Create a bunch of books manually
 addBookToLibrary("The Way of Kings", "Brandon Sanderson", 383389, "read");
 addBookToLibrary("The Crippled God", "Steven Erikson", 376000, "unread");
-addBookToLibrary("The Crippled God", "Steven Erikson", 376000, "unread");
-addBookToLibrary("The Crippled God", "Steven Erikson", 376000, "unread");
-addBookToLibrary("The Crippled God", "Steven Erikson", 376000, "unread");
-addBookToLibrary("The Crippled God", "Steven Erikson", 376000, "unread");
-addBookToLibrary("The Crippled God", "Steven Erikson", 376000, "unread");
-addBookToLibrary("The Crippled God", "Steven Erikson", 376000, "unread");
-addBookToLibrary("The Crippled God", "Steven Erikson", 376000, "unread");
-addBookToLibrary("The Crippled God", "Steven Erikson", 376000, "unread");
 
 myLibrary.forEach(book => {
     console.log("Books: " + book.info());
@@ -91,16 +82,21 @@ openModal.addEventListener("click", ()=> {
  })
 
 
- form.addEventListener("submit", (e) => {
+ myForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    modal.close();
 
-    let title = document.getElementById("Title");
-     let password = document.getElementById("password");
+    let title = myForm.title.value;
+    let author = myForm.author.value;
+    let pages = myForm.words.value;
+    let read = myForm.read.value;
 
-  if (username.value == "" || password.value == "") {
-    // throw error
-  } else {
-    // perform operation with form input
-  }
+    if ((title == null || title == "") && (author == null || author == "") && (pages == null || pages == "") && (read == null || read == ""))
+    {
+        alert("Please fill out all required fields");
+        return false;
+    }
+
+    myForm.reset();
+   addBookToLibrary(title, author, pages, read);
  })
-
