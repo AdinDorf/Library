@@ -70,8 +70,8 @@ function InitializeDisplay(){
 
 
 // Create a bunch of books manually
-addBookToLibrary("The Way of Kings", "Brandon Sanderson", 383389, "read");
-addBookToLibrary("The Crippled God", "Steven Erikson", 376000, "unread");
+addBookToLibrary("The Way of Kings", "Brandon Sanderson", 383389, true);
+addBookToLibrary("The Crippled God", "Steven Erikson", 376000, false);
 
 myLibrary.forEach(book => {
     console.log("Books: " + book.info());
@@ -81,22 +81,20 @@ openModal.addEventListener("click", ()=> {
     modal.showModal();
  })
 
-
  myForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    modal.close();
-
     let title = myForm.title.value;
     let author = myForm.author.value;
     let pages = myForm.words.value;
-    let read = myForm.read.value;
+    let read = myForm.read.checked;
 
-    if ((title == null || title == "") && (author == null || author == "") && (pages == null || pages == "") && (read == null || read == ""))
+    if ((title == null || title == "") || (author == null || author == "") || (pages == null || pages == ""))
     {
         alert("Please fill out all required fields");
         return false;
     }
 
+    modal.close();
     myForm.reset();
-   addBookToLibrary(title, author, pages, read);
+    addBookToLibrary(title, author, pages, read);
  })
