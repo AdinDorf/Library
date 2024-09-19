@@ -1,4 +1,4 @@
-const myLibrary = [];
+const myLibrary = new Map();
 const cardList = document.querySelector(".card-list");
 const openModal = document.querySelector(".roundbutton");
 const modal = document.querySelector("#modal");
@@ -17,46 +17,67 @@ function Book (title, author, wordCount, read) {
 
 function addBookToLibrary(title, author, wordCount, read) {
     let book = new Book(title, author, wordCount, read);
-    myLibrary.push(book);
-
-    console.log("Adding " + book.info());
-
-    let newBook = document.createElement("div")
-    newBook.classList.add("book");
-    cardList.appendChild(newBook);
-
-    newBook.setAttribute("data-index", myLibrary.indexOf(book));
-
-    let newBookTitle = document.createElement('h2');
-    newBook.appendChild(newBookTitle);
-    newBookTitle.textContent = book.title;
-   
-    let newBookAuthor = document.createElement('p');
-    newBook.appendChild(newBookAuthor);
-    newBookAuthor.textContent = book.author;
-
-    let newBookWordCount = document.createElement('p');
-    newBook.appendChild(newBookWordCount);
-    newBookWordCount.textContent = book.wordCount;
-
-    let newBookRead = document.createElement('p');
-    newBook.appendChild(newBookRead);
-    newBookRead.textContent = book.read;
-
-    let removeBook = document.createElement("button");
-    newBook.appendChild(removeBook);
-    removeBook.classList.add("removeBookBtn");
-    removeBook.textContent = "x";
+    myLibrary.set(title, book);
+    updateDisplay();
 }
 
+function updateDisplay() {
+    cardList.innerHTML = '';
 
-// Create a bunch of books manually
-addBookToLibrary("The Way of Kings", "Brandon Sanderson", 383389, true);
-addBookToLibrary("The Crippled God", "Steven Erikson", 376000, false);
+    myLibrary.forEach(book => {
+        let newBook = document.createElement("div")
+        newBook.classList.add("book");
+        cardList.appendChild(newBook);
 
-myLibrary.forEach(book => {
-    console.log("Books: " + book.info());
-});
+        newBook.setAttribute("data-title", book.title);
+
+        let newBookTitle = document.createElement('h2');
+        newBook.appendChild(newBookTitle);
+        newBookTitle.textContent = book.title;
+    
+        let newBookAuthor = document.createElement('p');
+        newBook.appendChild(newBookAuthor);
+        newBookAuthor.textContent = book.author;
+
+        let newBookWordCount = document.createElement('p');
+        newBook.appendChild(newBookWordCount);
+        newBookWordCount.textContent = book.wordCount;
+
+        let newBookRead = document.createElement('p');
+        newBook.appendChild(newBookRead);
+        newBookRead.textContent = book.read;
+
+        let removeButton = document.createElement("button");
+        newBook.appendChild(removeButton);
+        removeButton.classList.add("removeBookBtn");
+        removeButton.textContent = "x";
+        removeButton.addEventListener("click", removeBook);
+
+
+        //Create a disgusting but pretty slider toggle
+        let mySwitch = document.createElement("label");
+        mySwitch.classList.add("switch");
+        newBook.appendChild(mySwitch);
+
+        let readToggle = document.createElement("input");
+        mySwitch.appendChild(readToggle);
+
+        
+        let mySlider = document.createElement("span");
+        mySwitch.appendChild(mySlider);
+        mySlider.classList.add('slider');
+
+        readToggle.setAttribute('type', 'checkbox');
+
+    });
+}
+
+function removeBook(event) {
+    const target = event.target.parentElement.getAttribute('data-title');
+    console.log("Removing" + target);
+    myLibrary.delete(target);
+    updateDisplay();
+}
 
 openModal.addEventListener("click", ()=> {
     modal.showModal();
@@ -74,8 +95,13 @@ openModal.addEventListener("click", ()=> {
         alert("Please fill out all required fields");
         return false;
     }
-
+    addBookToLibrary(title, author, pages, read);
     modal.close();
     myForm.reset();
-    addBookToLibrary(title, author, pages, read);
  })
+
+ // Create a bunch of books manually
+addBookToLibrary("The Way of Kings", "Brandon Sanderson", 383389, true);
+addBookToLibrary("The Crippled God", "Steven Erikson", 376000, false);
+
+updateDisplay();
