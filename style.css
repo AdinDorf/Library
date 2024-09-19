@@ -26,11 +26,16 @@ button:hover{
     gap: 1em;   
 }
 
-.book {
+.card {
     background-color: white;
     box-shadow: 5px 5px 5px rgb(200, 200, 200);
-    padding: 10px;
     border-radius: 5%;
+}
+
+.book {
+  padding: 10px;
+  border-radius: 5%;
+  border-width: 0;
 }
 
 .roundbutton {
@@ -53,7 +58,7 @@ button:hover{
     cursor: pointer;
 }
 
-.roundbutton:hover {
+.roundbutton:hover, .removeBookBtn:hover {
     border-color:rgba(200, 200, 200, 0.777);
 }
 
@@ -85,3 +90,28 @@ button:hover{
     background: linear-gradient(0deg, black, whitesmoke);
     opacity: .4;
 }
+
+.checkbox {
+  border-radius: 50%;
+  border: 5px solid #000000;
+} 
+
+.readBook {
+  box-shadow: inset 0 0 2em rgba(106, 240, 137, 0.664);
+}
+
+.removeBookBtn{
+
+  background-color: rgba(255, 0, 0, 0.856);
+  color: white;
+  text-align: center;
+
+  border-style: solid;
+  border-radius: 50%;
+  border-width: 2px;
+  border-color:rgba(255, 255, 255, 0);
+  color: #f5f5f5;
+}
+
+  
+  

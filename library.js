@@ -25,9 +25,15 @@ function updateDisplay() {
     cardList.innerHTML = '';
 
     myLibrary.forEach(book => {
+
+        let card = document.createElement("div");
+        card.classList.add("card");
+        cardList.appendChild(card);
+
         let newBook = document.createElement("div")
         newBook.classList.add("book");
-        cardList.appendChild(newBook);
+        card.appendChild(newBook);
+        
 
         newBook.setAttribute("data-title", book.title);
 
@@ -43,9 +49,9 @@ function updateDisplay() {
         newBook.appendChild(newBookWordCount);
         newBookWordCount.textContent = book.wordCount;
 
-        let newBookRead = document.createElement('p');
-        newBook.appendChild(newBookRead);
-        newBookRead.textContent = book.read;
+        // let newBookRead = document.createElement('p');
+        // newBook.appendChild(newBookRead);
+        // newBookRead.textContent = book.read;
 
         let removeButton = document.createElement("button");
         newBook.appendChild(removeButton);
@@ -55,20 +61,19 @@ function updateDisplay() {
 
 
         //Create a disgusting but pretty slider toggle
-        let mySwitch = document.createElement("label");
-        mySwitch.classList.add("switch");
-        newBook.appendChild(mySwitch);
-
+ 
         let readToggle = document.createElement("input");
-        mySwitch.appendChild(readToggle);
-
-        
-        let mySlider = document.createElement("span");
-        mySwitch.appendChild(mySlider);
-        mySlider.classList.add('slider');
-
+        newBook.appendChild(readToggle);
         readToggle.setAttribute('type', 'checkbox');
+        readToggle.classList.add('checkbox');
+        readToggle.addEventListener("click", toggleRead);
 
+        readToggle.checked = book.read;
+
+        if (readToggle.checked === true) {
+            newBook.classList.add("readBook");
+        }
+   
     });
 }
 
@@ -76,6 +81,15 @@ function removeBook(event) {
     const target = event.target.parentElement.getAttribute('data-title');
     console.log("Removing" + target);
     myLibrary.delete(target);
+    updateDisplay();
+}
+
+function toggleRead(event){
+    const target = event.target.parentElement.getAttribute('data-title');
+    const bookToToggle = myLibrary.get(target);
+    console.log(target);
+  
+    bookToToggle.read = !bookToToggle.read;
     updateDisplay();
 }
 
