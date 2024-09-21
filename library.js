@@ -63,6 +63,9 @@ function updateDisplay() {
         //Create a disgusting but pretty slider toggle
  
         let readToggle = document.createElement("input");
+        let readLabel = document.createElement("label");
+        readLabel.innerText="Read? ";
+        newBook.appendChild(readLabel);
         newBook.appendChild(readToggle);
         readToggle.setAttribute('type', 'checkbox');
         readToggle.classList.add('checkbox');
