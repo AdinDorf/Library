@@ -41,10 +41,20 @@ function updateDisplay() {
         newBook.appendChild(newBookTitle);
         newBookTitle.textContent = book.title;
     
+
+        let newBookAuthorLabel = document.createElement("p");
+        newBookAuthorLabel.innerText= "By: ";
+        newBook.appendChild(newBookAuthorLabel);
+        
         let newBookAuthor = document.createElement('p');
+        newBookAuthor.setAttribute('id', 'Author');
         newBook.appendChild(newBookAuthor);
         newBookAuthor.textContent = book.author;
-
+        
+        let newBookPageLabel = document.createElement("p");
+        newBookPageLabel.innerText= "Words: ";
+        newBook.appendChild(newBookPageLabel);
+        
         let newBookWordCount = document.createElement('p');
         newBook.appendChild(newBookWordCount);
         newBookWordCount.textContent = book.wordCount;
